@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------
- * Name:    ADC.h
- * Purpose: low level ADC definitions
+ * Name:    LED.h
+ * Purpose: low level LED definitions
  * Note(s):
  *----------------------------------------------------------------------------
  * This file is part of the uVision/ARM development tools.
@@ -13,18 +13,15 @@
  * Copyright (c) 2009-2011 Keil - An ARM Company. All rights reserved.
  *----------------------------------------------------------------------------*/
 
-#include <stdint.h> 
-#ifndef __ADC_H
-#define __ADC_H
+#ifndef __LED_H
+#define __LED_H
 
-#define ADC_VALUE_MAX      (0xFFF)
+/* LED Definitions */
+#define LED_NUM     8                        /* Number of user LEDs          */
 
-extern uint16_t AD_last;
-extern uint8_t  AD_done;
-
-extern void     ADC_Init    (void);
-extern void     ADC_StartCnv(void);
-extern void     ADC_StopCnv (void);
-extern uint16_t ADC_GetCnv  (void);
+extern void LED_Init(void);
+extern void LED_On  (unsigned int num);
+extern void LED_Off (unsigned int num);
+extern void LED_Out (unsigned int value);
 
 #endif
