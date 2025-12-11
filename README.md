@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-C-blue.svg" />
+  <img src="https://img.shields.io/badge/MCU-ARM%20Cortex--M3-green.svg" />
+  <img src="https://img.shields.io/badge/Board-LPC1768-orange.svg" />
+  <img src="https://img.shields.io/badge/RTOS-Keil%20RTX-yellow.svg" />
+  <img src="https://img.shields.io/badge/Status-Stable-brightgreen.svg" />
+</p>
+
 # Embedded Media Center on LPC1768 (COE718 Project)
 
 A full-featured **Media Center** built on the **NXP LPC1768 (ARM Cortex-M3)** microcontroller.  
@@ -140,3 +148,10 @@ embedded-media-center-lpc1768/
 │   └── type.h
 │
 └── README.md
+
+© 2025 Umair Irfan. All rights reserved.
+
+This project is provided publicly for viewing purposes only.
+No part of this repository may be copied, reproduced, modified, or used
+for any academic, commercial, or personal project without explicit permission.
+
