@@ -1,92 +1,109 @@
 # Embedded Media Center on LPC1768 (COE718 Project)
 
-A fully integrated **Media Center** developed on the **NXP LPC1768 (ARM Cortex-M3)** microcontroller.  
-This system combines **Photo Display**, **USB Audio Playback**, **Arcade-Style Games**, and **Reaction Time Testing**, all rendered on a **320x240 GLCD** with full **joystick navigation** and **RTX real-time threading**.
+A full-featured **Media Center** built on the **NXP LPC1768 (ARM Cortex-M3)** microcontroller.  
+The system integrates **photo viewing**, **USB audio playback**, and a set of **interactive games**, all running through a clean menu interface rendered on a **320×240 GLCD**.  
+Navigation is handled entirely via a **5-way joystick**, and real-time performance is coordinated with **Keil RTX**.
 
-This repository includes:
-- Complete C source files (`src/`)
-- Header files (`include/`)
-- USB Audio stack and supporting driver modules (`usb_audio/`)
-- System architecture, modules, threading model, and implementation details
+This project demonstrates:
+- Embedded UI development  
+- Real-time audio streaming  
+- USB device driver integration  
+- Game programming on microcontrollers  
+- GLCD graphics  
+- Structured, modular C design  
+- Multi-threaded embedded scheduling (RTX)
 
 ---
 
 ## 🚀 Features Overview
 
 ### **1. Photo Gallery**
-- Displays multiple stored images on the GLCD  
-- Implements a clean page-by-page navigation system  
-- Uses optimized bitmap drawing routines for smooth rendering  
-- Controlled fully through the 5-way joystick (Up/Down/Left/Right/Select)
+- Displays stored images on the GLCD  
+- Smooth GUI navigation using joystick inputs  
+- Efficient screen drawing routines for clean transitions  
+- Fully modular — easy to add more images or categories  
 
 ---
 
 ### **2. USB Audio Playback**
-- Integrated **USB audio class** that streams audio via USB  
-- Handles audio buffer management, endpoints, and audio decoding pipeline  
-- Uses:
+- Implements USB Audio Class streaming  
+- Handles endpoint setup, buffering, descriptors, and playback pipeline  
+- Uses modules such as:
   - `usbcore.c`, `usbdesc.c`, `usbdmain.c`
-  - `audio.c`, `audio.h`
-- Provides stable playback using interrupt-driven scheduling  
-- Real-time audio output through DAC
+  - `audio.c`, `audio.h`, `usb.h`, `type.h`
+- Provides stable, uninterrupted audio output using DAC  
+- High-priority RTX threading to prevent audio glitches  
 
 ---
 
-### **3. Game Center (Arcade Mode)**  
-Includes multiple playable games written entirely in C for the LPC1768:
+## 🎮 Game Center (Arcade Mode)
 
-#### **Snake**
-- Classic snake movement  
-- Dynamic speed control  
-- Full screen rendering  
-- Collision and scoring system  
+A dedicated menu section that provides multiple interactive games written for the LPC1768 and optimized for GLCD rendering and joystick control.
 
-#### **Tic-Tac-Toe**
-- 2-player mode  
-- GLCD-drawn grid  
-- Joystick-controlled cursor  
+### **Snake**
+- Fully implemented classic Snake game  
+- Smooth 4-direction movement controlled by the joystick  
+- Dynamic length increase as food is collected  
+- Collision detection with walls and the snake body  
+- Real-time game loop powered by RTX for consistent speed  
+- Clean, pixel-based rendering on the GLCD grid  
 
-#### **Reaction Time Tester**
-- Randomized visual cue  
-- Measures reaction time in milliseconds  
-- Accurate timing via RTX delays and SysTick  
+### **Tic-Tac-Toe**
+- 2-player mode playable with only the joystick  
+- GLCD renders a clean 3×3 board  
+- Cursor-based tile selection system  
+- Prevents overwriting occupied tiles  
+- Win-detection logic for rows, columns, and diagonals  
+- Fully modularized so additional board-based games can be added  
 
-#### **Additional Mini-Games**
-- Extra small games included for fun  
-- Each game isolated in its own module  
+### **Reaction Time Tester**
+- Randomized trigger signal  
+- Measures user response time in milliseconds  
+- Uses SysTick + RTX timing functions for accuracy  
+
+### **Additional Mini-Games**
+- Extra lightweight games implemented as simple `.c`/`.h` modules  
 - Easily extendable architecture  
+- Integrated into Game Center menu system  
 
 ---
 
-## 🖥️ Display & Graphics (GLCD Module)
-- SPI-driven 320×240 graphical LCD  
-- Custom display functions for:
-  - Drawing images  
-  - Rendering text  
-  - Animations and sprites  
-- Abstracted drawing layer to simplify UI development  
+## 🖥 Display & Graphics (GLCD Module)
+- SPI-driven 320×240 color display  
+- Custom drawing utilities:
+  - Images  
+  - Text  
+  - Borders / shapes  
+  - Game elements  
+- Optimized to minimize flicker and maximize frame rate  
+- Provides an abstraction layer for UI rendering
 
 ---
 
 ## 🎮 Joystick Input Handling
-Joystick module handles:
-- Directional movement  
-- Button selection  
-- Continuous polling for real-time games  
-
-Debounced and processed using RTX threads.
+- Handles:
+  - Up / Down / Left / Right  
+  - Select  
+- Debounced polling via RTX threads  
+- Responsive input for real-time games  
+- Integrated with UI navigation and gameplay loops  
 
 ---
 
-## ⏱️ RTX Real-Time Operating System
-The Media Center uses Keil RTX for clean task separation:
+## ⏱ RTX Real-Time Operating System
+The project uses RTX to organize tasks into clean, predictable threads:
 
-- Threads for UI/menu rendering  
-- Threads for game loops  
-- High-priority audio streaming thread  
-- Timers for reaction tests, animations, and delays  
+- **UI/Menu Thread** — rendering and navigation  
+- **Audio Thread** — continuous USB audio streaming  
+- **Game Threads** — logic and display updates  
+- **Input Thread** — joystick polling  
+- **Timer Callbacks** — delays, animation pacing, reaction measurement  
 
-This ensures stable and responsive system performance.
+This architecture ensures:
+- Smooth graphics  
+- Reliable USB audio  
+- Non-blocking input  
+- Stable multi-feature performance  
 
 ---
 
@@ -123,59 +140,3 @@ embedded-media-center-lpc1768/
 │   └── type.h
 │
 └── README.md
-
-
----
-
-## 🛠️ How It Works
-
-### **Startup**
-- System clock, GLCD, joystick, USB, and RTX initialization  
-- Loads UI thread and prepares menu system  
-
-### **Menu System**
-Lets the user choose:
-- Photo Gallery  
-- USB Audio Player  
-- Snake  
-- Tic-Tac-Toe  
-- Reaction Timer  
-- Additional mini-games  
-
-Joystick provides navigation between pages and modules.
-
----
-
-## 📡 Hardware Used
-
-- **NXP LPC1768 Cortex-M3 MCU**  
-- **MCB1700 Development Board**  
-- **320×240 Color GLCD**  
-- **5-way Joystick**  
-- **USB Device Port**  
-
-Works with Keil uVision environment and RTX RTOS.
-
----
-
-## 📚 Summary
-
-This project demonstrates:
-- Embedded UI design  
-- Real-time audio  
-- USB device driver integration  
-- Game logic on microcontrollers  
-- GLCD graphics programming  
-- Structured modular C programming  
-- Multi-threaded embedded design with RTX  
-
-The system combines graphics, audio, games, and user interaction into a polished **Media Center** running on the LPC1768.
-
----
-
-## ✔️ Author
-**Umair Irfan**  
-Embedded Systems Design  
-
-
-
