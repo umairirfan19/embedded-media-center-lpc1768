@@ -92,36 +92,38 @@ This ensures stable and responsive system performance.
 
 ## 🧱 Project Structure
 
+```text
 embedded-media-center-lpc1768/
 │
-├── src/ # All .c source files (main program, games, gallery, etc.)
-│ ├── main.c
-│ ├── PHOTO_GALLERY.c
-│ ├── snake.c
-│ ├── tic_tac_toe.c
-│ ├── reaction_time.c
-│ ├── LED.c
-│ ├── ADC.c
-│ └── etc...
+├── src/                     # All .c source files (main program, games, gallery, etc.)
+│   ├── main.c
+│   ├── PHOTO_GALLERY.c
+│   ├── snake.c
+│   ├── tic_tac_toe.c
+│   ├── reaction_time.c
+│   ├── LED.c
+│   ├── ADC.c
+│   └── ... (other modules)
 │
-├── include/ # Header files for modules
-│ ├── snake.h
-│ ├── tic_tac_toe.h
-│ ├── KBD.h
-│ ├── GLCD.h
-│ ├── LED.h
-│ └── etc...
+├── include/                 # Header files for modules
+│   ├── snake.h
+│   ├── tic_tac_toe.h
+│   ├── KBD.h
+│   ├── GLCD.h
+│   ├── LED.h
+│   └── ... (other headers)
 │
-├── usb_audio/ # USB Audio driver stack + helper modules
-│ ├── audio.c
-│ ├── audio.h
-│ ├── usb.h
-│ ├── usbcore.c
-│ ├── usbdesc.c
-│ ├── usbdmain.c
-│ └── type.h
+├── usb_audio/               # USB Audio driver stack + helper modules
+│   ├── audio.c
+│   ├── audio.h
+│   ├── usb.h
+│   ├── usbcore.c
+│   ├── usbdesc.c
+│   ├── usbdmain.c
+│   └── type.h
 │
 └── README.md
+
 
 ---
 
@@ -173,7 +175,7 @@ The system combines graphics, audio, games, and user interaction into a polished
 
 ## ✔️ Author
 **Umair Irfan**  
-COE718 – Embedded Systems Design  
-Toronto Metropolitan University
+Embedded Systems Design  
+
 
 
