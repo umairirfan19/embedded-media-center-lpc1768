@@ -101,11 +101,11 @@ A dedicated menu section that provides multiple interactive games written for th
 ## ⏱ RTX Real-Time Operating System
 The project uses RTX to organize tasks into clean, predictable threads:
 
-- **UI/Menu Thread** — rendering and navigation  
-- **Audio Thread** — continuous USB audio streaming  
-- **Game Threads** — logic and display updates  
-- **Input Thread** — joystick polling  
-- **Timer Callbacks** — delays, animation pacing, reaction measurement  
+- **UI/Menu Thread** - rendering and navigation  
+- **Audio Thread** - continuous USB audio streaming  
+- **Game Threads** - logic and display updates  
+- **Input Thread** - joystick polling  
+- **Timer Callbacks** - delays, animation pacing, reaction measurement  
 
 This architecture ensures:
 - Smooth graphics  
